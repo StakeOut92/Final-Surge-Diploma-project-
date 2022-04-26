@@ -41,5 +41,4 @@ public class LoginPage extends BasePage {
     driver.findElement(By.xpath("//div[@class='user-info']")).isDisplayed();
     return true;
     }
-
 }
