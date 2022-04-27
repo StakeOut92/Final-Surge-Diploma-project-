@@ -4,41 +4,33 @@ import com.github.javafaker.Faker;
 
 public class GenerateFakeMessage {
 
-    public static String getWorkoutTime() {
-        Faker faker = new Faker();
-        return faker.number().digits(4);
-    }
-
-    public static String getName(){
+    public static String getName() {
         Faker faker = new Faker();
         return faker.funnyName().name();
     }
 
-    public static String getDescription(){
+    public static String getDescription() {
         Faker faker = new Faker();
         return faker.animal().name();
     }
 
-    public static String getDistance(){
+    public static String getDistance() {
         Faker faker = new Faker();
         return faker.number().digits(2);
     }
 
-    public static String getCaloriesBurned(){
+    public static String getCaloriesBurned() {
         Faker faker = new Faker();
         return faker.number().digits(3);
     }
 
-    public static String getRandomEmail(){
+    public static String getRandomEmail() {
         Faker faker = new Faker();
         return faker.internet().emailAddress();
     }
 
-    public static String getRandomPassword(){
+    public static String getRandomPassword() {
         Faker faker = new Faker();
         return faker.internet().password();
     }
-
-
-
 }

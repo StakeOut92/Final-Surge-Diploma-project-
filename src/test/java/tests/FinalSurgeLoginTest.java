@@ -57,4 +57,13 @@ public class FinalSurgeLoginTest extends BaseTest {
         loginPage.openPage();
         Assert.assertEquals(loginPage.loginWithoutEmail(),"Please enter your e-mail address.","Invalid message about email");
     }
+
+    @Test
+    @Description("Check the possibility of logging out and displaying a message about successful exit from the profile")
+    public void logoutFromProfileTest(){
+        log.info("logoutFromProfileTest started");
+        loginPage = new LoginPage(driver);
+        loginPage.openPage();
+        Assert.assertEquals(loginPage.loginAndLogout(),"You have been successfully logged out of the system.","Logout message is not available or incorrect");
+    }
 }
