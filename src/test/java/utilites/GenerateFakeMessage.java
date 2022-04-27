@@ -19,5 +19,16 @@ public class GenerateFakeMessage {
         return faker.animal().name();
     }
 
+    public static String getDistance(){
+        Faker faker = new Faker();
+        return faker.number().digits(2);
+    }
+
+    public static String getCaloriesBurned(){
+        Faker faker = new Faker();
+        return faker.number().digits(3);
+    }
+
+
 
 }
