@@ -21,4 +21,40 @@ public class FinalSurgeLoginTest extends BaseTest {
         loginPage.makeLogin();
         Assert.assertTrue(loginPage.isLoginIsSuccessful(), "Login is not success");
     }
+
+    @Test
+    @Description("Check that if you enter an incorrect password, a message is displayed stating that the username or password entered is incorrect")
+    public void loginWithIncorrectEmailTest(){
+        log.info("loginWithIncorrectEmailTest started");
+        loginPage = new LoginPage(driver);
+        loginPage.openPage();
+        Assert.assertEquals(loginPage.loginWithIncorrectEmail(),"Invalid login credentials. Please try again.","Incorrect login message is not displayed");
+    }
+
+    @Test
+    @Description("Check that if you enter an incorrect password, a message is displayed stating that the username or password entered is incorrect")
+    public void loginWithIncorrectPasswordTest(){
+        log.info("loginWithIncorrectPasswordTest started");
+        loginPage = new LoginPage(driver);
+        loginPage.openPage();
+        Assert.assertEquals(loginPage.loginWithIncorrectPassword(),"Invalid login credentials. Please try again.","Incorrect login message is not displayed");
+    }
+
+    @Test
+    @Description("Check that when you enter email, but not enter password, a message about incorrect password is displayed")
+    public void loginWithoutPasswordTest(){
+        log.info("loginWithoutPasswordTest started");
+        loginPage = new LoginPage(driver);
+        loginPage.openPage();
+        Assert.assertEquals(loginPage.loginWithoutPassword(),"Please enter a password.","Invalid message about password");
+    }
+
+    @Test
+    @Description("Check that when you enter an incorrect email, a message about incorrect email is displayed")
+    public void loginWithoutEmailTest(){
+        log.info("loginWithoutEmailTest started");
+        loginPage = new LoginPage(driver);
+        loginPage.openPage();
+        Assert.assertEquals(loginPage.loginWithoutEmail(),"Please enter your e-mail address.","Invalid message about email");
+    }
 }

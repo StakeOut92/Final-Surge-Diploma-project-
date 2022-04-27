@@ -29,6 +29,16 @@ public class GenerateFakeMessage {
         return faker.number().digits(3);
     }
 
+    public static String getRandomEmail(){
+        Faker faker = new Faker();
+        return faker.internet().emailAddress();
+    }
+
+    public static String getRandomPassword(){
+        Faker faker = new Faker();
+        return faker.internet().password();
+    }
+
 
 
 }
