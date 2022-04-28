@@ -3,7 +3,7 @@
 <suite name="Regression Test" thread-count="1" parallel="classes">
     <test name="test 1">
         <classes>
-            <class name="tests.FinalSurgeLoginTest"></class>
+            <class name="tests.LoginTests.FinalSurgeLoginTest"></class>
             <parameter name="browser" value="chrome"></parameter>
         </classes>
     </test> <!-- Test -->

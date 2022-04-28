@@ -1,7 +1,6 @@
-package pages;
+package pages.WorkoutTabPages;
 
 import org.openqa.selenium.WebDriver;
-
 
 public abstract class BasePage {
     WebDriver driver;

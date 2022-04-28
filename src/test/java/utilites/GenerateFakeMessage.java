@@ -33,4 +33,14 @@ public class GenerateFakeMessage {
         Faker faker = new Faker();
         return faker.internet().password();
     }
+
+    public static String getElevation(){
+        Faker faker = new Faker();
+        return faker.number().digits(2);
+    }
+
+    public static String getAverage(){
+        Faker faker = new Faker();
+        return faker.number().digits(2);
+    }
 }
