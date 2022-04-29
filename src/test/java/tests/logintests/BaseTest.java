@@ -1,4 +1,4 @@
-package tests.LoginTests;
+package tests.logintests;
 
 import driver.DriverFactory;
 import driver.DriverManager;

@@ -1,11 +1,11 @@
-package tests.WorkoutTabTests;
+package tests.workouttabtests;
 
 import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.LoginPages.LoginPage;
-import pages.WorkoutTabPages.WorkoutTabBikePage;
+import pages.loginpages.LoginPage;
+import pages.workouttabpages.WorkoutTabBikePage;
 
 @Log4j
 public class AddBikeWorkoutTest extends BaseTest{

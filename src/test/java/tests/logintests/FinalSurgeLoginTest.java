@@ -1,10 +1,10 @@
-package tests.LoginTests;
+package tests.logintests;
 
 import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.LoginPages.LoginPage;
+import pages.loginpages.LoginPage;
 import utilites.Retry;
 
 @Log4j

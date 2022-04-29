@@ -1,4 +1,4 @@
-package pages.WorkoutTabPages;
+package pages.workouttabpages;
 
 import org.openqa.selenium.WebDriver;
 

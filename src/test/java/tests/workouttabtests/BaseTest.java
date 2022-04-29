@@ -1,4 +1,4 @@
-package tests.WorkoutTabTests;
+package tests.workouttabtests;
 
 import driver.DriverFactory;
 import driver.DriverManager;

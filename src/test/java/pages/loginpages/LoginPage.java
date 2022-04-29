@@ -1,4 +1,4 @@
-package pages.LoginPages;
+package pages.loginpages;
 
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j;

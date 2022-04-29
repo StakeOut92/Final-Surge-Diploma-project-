@@ -1,4 +1,4 @@
-package pages.LoginPages;
+package pages.loginpages;
 
 import org.openqa.selenium.WebDriver;
 

@@ -43,4 +43,29 @@ public class GenerateFakeMessage {
         Faker faker = new Faker();
         return faker.number().digits(2);
     }
+
+    public static String getShoeName(){
+        Faker faker = new Faker();
+        return faker.chuckNorris().fact();
+    }
+
+    public static String getShoeModel(){
+        Faker faker = new Faker();
+        return faker.ancient().titan();
+    }
+
+    public static String getShoePrice(){
+        Faker faker = new Faker();
+        return faker.number().digits(3);
+    }
+
+    public static String getDistanceAlert(){
+        Faker faker = new Faker();
+        return faker.number().digits(3);
+    }
+
+    public static String getNotesMessage(){
+        Faker faker = new Faker();
+        return faker.lordOfTheRings().character();
+    }
 }
