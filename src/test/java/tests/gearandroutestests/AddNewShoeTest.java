@@ -3,18 +3,19 @@ package tests.gearandroutestests;
 
 import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.gearandroutespages.ShoesPage;
 import pages.loginpages.LoginPage;
 
 @Log4j
-public class AddNewShoeTest extends BaseTest{
+public class AddNewShoeTest extends BaseTest {
 
     LoginPage loginPage;
     ShoesPage shoesPage;
 
     @Test
-    @Description("Checking that new shoe was added and check that it successfull")
+    @Description("Checking that new shoe was added and check that it successful")
     public void addNewShoeTest() {
         log.info("addNewShoeTest started ");
         loginPage = new LoginPage(driver);
@@ -22,7 +23,6 @@ public class AddNewShoeTest extends BaseTest{
         loginPage.makeLogin();
         shoesPage = new ShoesPage(driver);
         shoesPage.saveNewShoesForm();
+        Assert.assertTrue(shoesPage.isNewShoeAddSuccessful(), "New shoe was not added into table");
     }
-
-
 }

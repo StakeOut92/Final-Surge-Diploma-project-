@@ -24,10 +24,10 @@ public class BaseTest {
         driverManager.setTimeout();
     }
 
-    @AfterMethod
-    public void tearDown() {
-        driverManager.quitDriver();
-    }
+//    @AfterMethod
+//    public void tearDown() {
+//        driverManager.quitDriver();
+//    }
 
     public WebDriver getDriver() {
         return driver;

@@ -44,10 +44,6 @@ public class GenerateFakeMessage {
         return faker.number().digits(2);
     }
 
-    public static String getShoeName(){
-        Faker faker = new Faker();
-        return faker.chuckNorris().fact();
-    }
 
     public static String getShoeModel(){
         Faker faker = new Faker();
