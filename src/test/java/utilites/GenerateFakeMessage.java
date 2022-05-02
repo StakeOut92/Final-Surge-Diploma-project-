@@ -50,7 +50,7 @@ public class GenerateFakeMessage {
         return faker.ancient().titan();
     }
 
-    public static String getShoePrice(){
+    public static String getShoeCost(){
         Faker faker = new Faker();
         return faker.number().digits(3);
     }

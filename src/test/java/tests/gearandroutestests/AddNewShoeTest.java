@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.gearandroutespages.ShoesPage;
 import pages.loginpages.LoginPage;
+import testdata.GetNewShoesAccountModel;
 
 @Log4j
 public class AddNewShoeTest extends BaseTest {
@@ -22,7 +23,7 @@ public class AddNewShoeTest extends BaseTest {
         loginPage.openPage();
         loginPage.makeLogin();
         shoesPage = new ShoesPage(driver);
-        shoesPage.saveNewShoesForm();
-        Assert.assertTrue(shoesPage.isNewShoeAddSuccessful(), "New shoe was not added into table");
+        shoesPage.saveNewShoesForm(GetNewShoesAccountModel.getShoeFields());
+        Assert.assertEquals(shoesPage.getShoesDetails(),GetNewShoesAccountModel.getShoeFields());
     }
 }

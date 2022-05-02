@@ -1,21 +1,22 @@
 package pages.gearandroutespages;
 
 
+import elements.ShoeName;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j;
+import models.AddShoeModel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import staticdata.WebUrls;
-import utilites.GenerateFakeMessage;
+import testdata.GetNewShoesAccountModel;
 
-import java.util.List;
 
 @Log4j
-public class ShoesPage extends BasePage{
-    private String expectedShoeName;
+public class ShoesPage extends BasePage {
+
 
 
     private By SHOES_BUTTON = By.xpath("//td//a[contains (text(), 'Shoes')]");
@@ -32,48 +33,49 @@ public class ShoesPage extends BasePage{
     private By DISTANCE_ALERT_TYPE = By.id("DistAlertType");
     private By NOTES = By.id("ShoeNotes");
     private By ADD_SHOE_BUTTON = By.id("saveButton");
-    private By ALL_TABLE_PATH = By.xpath("//table[@class='table']");
+    private By ADDED_SHOE_BRAND = By.xpath("//div//a[@class='select2-choice']//span");
 
     public ShoesPage(WebDriver driver) {
         super(driver);
     }
 
     @Step("Input data in Shoes tab fields and click 'Add shoe'")
-    public void saveNewShoesForm()  {
+    public void   saveNewShoesForm (AddShoeModel shoeModel) {
         log.info("Staring to add data in Shoes tab fields");
         driver.get(WebUrls.GEAR_AND_ROUTES_URL);
         driver.findElement(SHOES_BUTTON).click();
-        driver.findElement(SHOE_NAME).sendKeys(GenerateFakeMessage.getName());
+        driver.findElement(SHOE_NAME).sendKeys(shoeModel.getShoeName());
         driver.findElement(SHOE_BRAND_BUTTON).click();
-        driver.findElement(SHOE_BRAND_INPUT_TEXT_FIELD).sendKeys("adidas");
+        driver.findElement(SHOE_BRAND_INPUT_TEXT_FIELD).sendKeys(shoeModel.getShoeBrand());
         driver.findElement(SHOE_BRAND_INPUT_TEXT_FIELD).sendKeys(Keys.ENTER);
-        driver.findElement(SHOE_MODEL).sendKeys(GenerateFakeMessage.getShoeModel());
-        driver.findElement(SHOE_COST).sendKeys(GenerateFakeMessage.getShoePrice());
-        driver.findElement(DATE_PURCHASED).sendKeys("04/22/2021");
+        driver.findElement(SHOE_MODEL).sendKeys(shoeModel.getShoeModel());
+        driver.findElement(SHOE_COST).sendKeys(shoeModel.getShoeCost());
+        driver.findElement(DATE_PURCHASED).sendKeys(shoeModel.getDatePurchased());
         Select shoeSize = new Select(driver.findElement(SHOE_SIZE));
         shoeSize.selectByValue("5");
-        driver.findElement(STARTING_DISTANCE).sendKeys(GenerateFakeMessage.getDistance());
+        driver.findElement(STARTING_DISTANCE).sendKeys(shoeModel.getStartingDistance());
         Select distanceType = new Select(driver.findElement(STARTING_DISTANCE_TYPE));
         distanceType.selectByVisibleText("km");
-        driver.findElement(DISTANCE_ALERT).sendKeys(GenerateFakeMessage.getDistanceAlert());
+        driver.findElement(DISTANCE_ALERT).sendKeys(shoeModel.getDistanceAlert());
         Select alertDistanceType = new Select(driver.findElement(DISTANCE_ALERT_TYPE));
         alertDistanceType.selectByValue("km");
-        driver.findElement(NOTES).sendKeys(GenerateFakeMessage.getNotesMessage());
-        expectedShoeName = driver.findElement(SHOE_NAME).getAttribute("value");
+        driver.findElement(NOTES).sendKeys(shoeModel.getNotes());
         driver.findElement(ADD_SHOE_BUTTON).click();
+        new ShoeName(driver,shoeModel.getShoeName()).clickToNewAddedShoe();
     }
 
     @Step("Check that new shoe is added successful")
-    public boolean isNewShoeAddSuccessful(){
-        log.info("Start to check, that new shoe was added ");
-        List<WebElement> table = driver.findElements(ALL_TABLE_PATH);
-        String fullString = "";
-        for (WebElement element : table){
-            fullString = element.getText();
-            if (fullString.contains(expectedShoeName)){
-                break;
-            }
-        }
-       return true;
+    public AddShoeModel getShoesDetails() {
+        return AddShoeModel.builder()
+                .shoeName(driver.findElement(SHOE_NAME).getAttribute("value"))
+                .shoeBrand(driver.findElement(ADDED_SHOE_BRAND).getText())
+                .shoeModel(driver.findElement(SHOE_MODEL).getAttribute("value"))
+                .shoeCost(driver.findElement(SHOE_COST).getAttribute("value"))
+                .datePurchased(driver.findElement(DATE_PURCHASED).getAttribute("value"))
+                .startingDistance(driver.findElement(STARTING_DISTANCE).getAttribute("value"))
+                .distanceAlert(driver.findElement(DISTANCE_ALERT).getAttribute("value"))
+                .notes(driver.findElement(NOTES).getAttribute("value"))
+                .build();
     }
+
 }
