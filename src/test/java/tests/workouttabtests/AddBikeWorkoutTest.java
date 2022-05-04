@@ -7,6 +7,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.loginpages.LoginPage;
 import pages.workouttabpages.WorkoutTabBikePage;
+import testdata.GetNewWorkoutBikeModel;
 import utilites.TestListeners;
 
 @Listeners(TestListeners.class)
@@ -23,7 +24,7 @@ public class AddBikeWorkoutTest extends BaseTest{
         loginPage.openPage();
         loginPage.makeLogin();
         workoutTabBikePage = new WorkoutTabBikePage(driver);
-        workoutTabBikePage.saveNewBikeWorkoutForm();
-        Assert.assertTrue(workoutTabBikePage.isWorkoutCreated(),"Bike Workout is not created, ot message is not appear");
+        workoutTabBikePage.saveNewBikeWorkoutForm(GetNewWorkoutBikeModel.getBikeFields());
+        Assert.assertTrue(workoutTabBikePage.isWorkoutCreated(),"Bike Workout is not created, or message is not appear");
     }
 }

@@ -2,6 +2,7 @@ package pages.workouttabpages;
 
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j;
+import models.AddWorkoutBikeModel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -42,43 +43,44 @@ public class WorkoutTabBikePage extends BasePage {
     }
 
     @Step("Input data in Bike workout tab fields and click 'Add Workout'")
-    public void saveNewBikeWorkoutForm() {
+    public void saveNewBikeWorkoutForm(AddWorkoutBikeModel bikeModel) {
         log.info("Start added data in Bike workout fields");
         driver.get(WebUrls.ADD_WORKOUT_BUTTON);
         driver.findElement(BIKE_TAB).click();
-        driver.findElement(TIME_OF_DAY_FIELD).sendKeys("1400");
-        driver.findElement(WORKOUT_NAME).sendKeys(GenerateFakeMessage.getName());
-        driver.findElement(WORKOUT_DESCRIPTION).sendKeys(GenerateFakeMessage.getDescription());
-        driver.findElement(DISTANCE_FIELD).sendKeys(GenerateFakeMessage.getDistance());
+        driver.findElement(TIME_OF_DAY_FIELD).sendKeys(bikeModel.getTimeOfDay());
+        driver.findElement(WORKOUT_NAME).sendKeys(bikeModel.getWorkoutName());
+        driver.findElement(WORKOUT_DESCRIPTION).sendKeys(bikeModel.getWorkoutDescription());
+        driver.findElement(DISTANCE_FIELD).sendKeys(bikeModel.getDistance());
         Select distanceType = new Select(driver.findElement(DISTANCE_TYPE));
         distanceType.selectByVisibleText("km");
-        driver.findElement(DURATION_FIELD).sendKeys("11000");
+        driver.findElement(DURATION_FIELD).sendKeys(bikeModel.getDuration());
         Select paceType = new Select(driver.findElement(PACE_TYPE));
         paceType.selectByVisibleText("min/km");
-        driver.findElement(ELEVATION_GAIN).sendKeys(GenerateFakeMessage.getElevation());
+        driver.findElement(ELEVATION_GAIN).sendKeys(bikeModel.getElevationGain());
         Select elevationGainType = new Select(driver.findElement(ELEVATION_GAIN_TYPE));
         elevationGainType.selectByVisibleText("m");
-        driver.findElement(ELEVATION_LOSS).sendKeys(GenerateFakeMessage.getElevation());
+        driver.findElement(ELEVATION_LOSS).sendKeys(bikeModel.getElevationLoss());
         Select elevationGainLoss = new Select(driver.findElement(ELEVATION_LOSS_TYPE));
         elevationGainLoss.selectByVisibleText("m");
         driver.findElement(GOOD_RADIO_BUTTON).click();
         Select perceivedEffort = new Select(driver.findElement(PERCEIVED_EFFORT));
         perceivedEffort.selectByValue("5");
-        driver.findElement(AVG_POWER).sendKeys(GenerateFakeMessage.getAverage());
-        driver.findElement(MAX_POWER).sendKeys(GenerateFakeMessage.getAverage());
-        driver.findElement(AVG_CADENCE).sendKeys(GenerateFakeMessage.getAverage());
-        driver.findElement(MAX_CADENCE).sendKeys(GenerateFakeMessage.getAverage());
-        driver.findElement(MINIMUM_HR).sendKeys("80");
-        driver.findElement(AVERAGE_HR).sendKeys("100");
-        driver.findElement(MAXIMUM_HR).sendKeys("120");
-        driver.findElement(CALORIES_BURNED).sendKeys(GenerateFakeMessage.getCaloriesBurned());
+        driver.findElement(AVG_POWER).sendKeys(bikeModel.getAvgPower());
+        driver.findElement(MAX_POWER).sendKeys(bikeModel.getMaxPower());
+        driver.findElement(AVG_CADENCE).sendKeys(bikeModel.getAvgCadence());
+        driver.findElement(MAX_CADENCE).sendKeys(bikeModel.getMaxCadence());
+        driver.findElement(MINIMUM_HR).sendKeys(bikeModel.getMinHr());
+        driver.findElement(AVERAGE_HR).sendKeys(bikeModel.getAvgHr());
+        driver.findElement(MAXIMUM_HR).sendKeys(bikeModel.getMaxHr());
+        driver.findElement(CALORIES_BURNED).sendKeys(bikeModel.getCaloriesBurned());
         log.info("All elements are added, click on Add workout button");
         driver.findElement(ADD_WORKOUT_BUTTON).click();
     }
 
     public boolean isWorkoutCreated() {
-        driver.findElement(ACTIVITY_TYPE_NAME).isEnabled();
-        return true;
+        if (driver.findElement(ACTIVITY_TYPE_NAME).isEnabled()) {
+            return true;
+        } else
+            return false;
     }
-
 }
