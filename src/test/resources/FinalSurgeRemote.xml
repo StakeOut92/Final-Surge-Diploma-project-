@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Test" thread-count="2" parallel="tests">
+    <test name="Login tests">
+        <classes>
+            <class name="tests.logintests.FinalSurgeLoginTest"></class>
+            <parameter name="browser" value="remotedriver"></parameter>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Gear and routes page tests">
+        <classes>
+            <class name="tests.gearandroutestests.AddNewBikeTest"></class>
+            <class name="tests.gearandroutestests.AddNewShoeTest"></class>
+            <parameter name="browser" value="remotedriver"></parameter>
+        </classes>
+    </test>
+    <test name="Workout tab tests">
+        <classes>
+            <class name="tests.workouttabtests.AddBikeWorkoutTest"></class>
+            <class name="tests.workouttabtests.AddRunWorkoutTest"></class>
+            <parameter name="browser" value="remotedriver"></parameter>
+        </classes>
+    </test>
+</suite>

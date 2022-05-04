@@ -20,8 +20,8 @@ Short checklist:
 
 7)Check the possibility of adding a bike activity in the "Workouts" tab
 
-8)Check the ability to add shoes in the "Gear & Routes" tab
+8)Check the possibility of adding shoes in the "Equipment and routes" tab and check that all data is filled in correctly
 
-9)Check the ability to add bicycle in the "Gear & Routes" tab
+9)Check the ability to add bicycle in the "Gear & Routes" tab and check that all data is filled in correctly
 
 10)Check the possibility of deleting events through the calendar tab and check that the event has been deleted
