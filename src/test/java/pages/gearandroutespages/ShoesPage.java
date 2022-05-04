@@ -9,9 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import staticdata.WebUrls;
-import testdata.GetNewShoesAccountModel;
+
 
 
 @Log4j
@@ -53,6 +52,7 @@ public class ShoesPage extends BasePage {
         driver.findElement(DATE_PURCHASED).sendKeys(shoeModel.getDatePurchased());
         Select shoeSize = new Select(driver.findElement(SHOE_SIZE));
         shoeSize.selectByValue("5");
+        driver.findElement(STARTING_DISTANCE).clear();
         driver.findElement(STARTING_DISTANCE).sendKeys(shoeModel.getStartingDistance());
         Select distanceType = new Select(driver.findElement(STARTING_DISTANCE_TYPE));
         distanceType.selectByVisibleText("km");
@@ -64,8 +64,9 @@ public class ShoesPage extends BasePage {
         new ShoeName(driver,shoeModel.getShoeName()).clickToNewAddedShoe();
     }
 
-    @Step("Check that new shoe is added successful")
+    @Step("Return new shoe added data")
     public AddShoeModel getShoesDetails() {
+        log.info("Starting to get saved shoe data");
         return AddShoeModel.builder()
                 .shoeName(driver.findElement(SHOE_NAME).getAttribute("value"))
                 .shoeBrand(driver.findElement(ADDED_SHOE_BRAND).getText())

@@ -20,6 +20,7 @@ public class LoginPage extends BasePage {
     private By PLEASE_ENTER_PASSWORD_MESSAGE = By.xpath("//label[contains(@for, 'login_password') and contains(@class, 'error')]");
     private By PLEASE_ENTER_EMAIL_MESSAGE = By.xpath("//label[contains(@for, 'login_name') and contains(@class, 'error')]");
     private By LOGOUT_SUCCESS_MESSAGE = By.xpath("//div[@class='alert alert-success']//strong[contains(text(), 'successfully')]");
+    private By LOGIN_SUCCESS = By.xpath("//div[@class='user-info']");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -42,7 +43,7 @@ public class LoginPage extends BasePage {
     @Step("Check that login is successful")
     public boolean isLoginIsSuccessful() {
         log.info("isLoginIsSuccessful method started");
-        driver.findElement(By.xpath("//div[@class='user-info']")).isDisplayed();
+        driver.findElement(LOGIN_SUCCESS).isDisplayed();
         return true;
     }
 
@@ -85,7 +86,7 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Login, logout and check that logout is correct")
-    public String loginAndLogout(){
+    public String loginAndLogout() {
         log.info("Login and logout method started");
         driver.findElement(EMAIL_INPUT).sendKeys(EmailAndPassword.EMAIL);
         driver.findElement(PASSWORD_INPUT).sendKeys(EmailAndPassword.PASSWORD);

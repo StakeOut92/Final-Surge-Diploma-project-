@@ -4,9 +4,7 @@ import driver.DriverFactory;
 import driver.DriverManager;
 import driver.DriverType;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
 import utilites.TestListeners;
 import java.net.MalformedURLException;
 
@@ -18,9 +16,20 @@ public class BaseTest {
     DriverManager driverManager;
 
     @BeforeMethod
-    public void setUp() throws MalformedURLException {
+    @Parameters({"browser"})
+    public void setUp(@Optional("chrome") String browser) throws MalformedURLException {
         DriverFactory factory = new DriverFactory();
-        driverManager = factory.getManager(DriverType.CHROME);
+        DriverType driverType = null;
+        if(browser.equals("chrome")){
+            driverType = DriverType.CHROME;
+        }
+        else if (browser.equals("edge")){
+            driverType = DriverType.EDGE;
+        }
+        else if (browser.equals("remotedriver")){
+            driverType = DriverType.REMOTEDRIVER;
+        }
+        driverManager = factory.getManager(driverType);
         driverManager.createDriver();
         driver = driverManager.getDriver();
         driverManager.maximize();

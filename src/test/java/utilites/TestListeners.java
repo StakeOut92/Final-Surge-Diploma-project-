@@ -1,10 +1,11 @@
 package utilites;
 
-import org.openqa.selenium.WebDriver;
+
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import tests.logintests.BaseTest;
+
+
 
 public class TestListeners implements ITestListener {
     @Override
@@ -17,14 +18,14 @@ public class TestListeners implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        Object currentClass = iTestResult.getInstance();
-        WebDriver webDriver = ((BaseTest) currentClass).getDriver();
-        AllureService allureService = new AllureService();
-        allureService.takeScreenshot(webDriver);
+        Retry retry = new Retry();
+        retry.retry(iTestResult);
     }
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
+        Retry retry = new Retry();
+        retry.retry(iTestResult);
     }
 
     @Override

@@ -16,7 +16,7 @@ public class GenerateFakeMessage {
 
     public static String getDistance() {
         Faker faker = new Faker();
-        return faker.number().digits(2);
+        return faker.number().digit();
     }
 
     public static String getCaloriesBurned() {
@@ -52,16 +52,31 @@ public class GenerateFakeMessage {
 
     public static String getShoeCost(){
         Faker faker = new Faker();
-        return faker.number().digits(3);
+        return faker.number().digits(1);
     }
 
     public static String getDistanceAlert(){
         Faker faker = new Faker();
-        return faker.number().digits(3);
+        return faker.number().digits(1);
     }
 
     public static String getNotesMessage(){
         Faker faker = new Faker();
         return faker.lordOfTheRings().character();
+    }
+
+    public static String getMinHr(){
+        Faker faker = new Faker();
+        return faker.number().digits(2);
+    }
+
+    public static String getAvgHr(){
+        Faker faker = new Faker();
+        return faker.number().digits(2);
+    }
+
+    public static String getMaxHr(){
+        Faker faker = new Faker();
+        return faker.number().digits(2);
     }
 }
