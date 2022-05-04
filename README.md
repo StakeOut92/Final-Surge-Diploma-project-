@@ -1,6 +1,8 @@
 # Final-Surge-Diploma-project-
 Creating a test project for the "finalsurge.com" training plan application
 
+![Final-Surge-Logo1](https://user-images.githubusercontent.com/97663699/166706785-66edaa98-ef72-4ada-aa2c-2832ac56fce1.png)
+
 Short checklist:
 
 1)Check that validation is successful when entering a login and password
