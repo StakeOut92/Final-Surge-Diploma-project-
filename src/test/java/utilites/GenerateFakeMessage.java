@@ -52,7 +52,7 @@ public class GenerateFakeMessage {
 
     public static String getShoeCost(){
         Faker faker = new Faker();
-        return faker.number().digits(1);
+        return String.valueOf(faker.number().numberBetween(1,9));
     }
 
     public static String getDistanceAlert(){
