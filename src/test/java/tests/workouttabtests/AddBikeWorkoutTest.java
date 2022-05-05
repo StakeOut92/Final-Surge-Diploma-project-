@@ -8,11 +8,12 @@ import org.testng.annotations.Test;
 import pages.loginpages.LoginPage;
 import pages.workouttabpages.WorkoutTabBikePage;
 import testdata.GetNewWorkoutBikeModel;
+import tests.BaseTest;
 import utilites.TestListeners;
 
 @Listeners(TestListeners.class)
 @Log4j
-public class AddBikeWorkoutTest extends BaseTest{
+public class AddBikeWorkoutTest extends BaseTest {
     LoginPage loginPage;
     WorkoutTabBikePage workoutTabBikePage;
 

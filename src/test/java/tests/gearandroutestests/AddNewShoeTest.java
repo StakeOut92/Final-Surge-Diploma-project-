@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import pages.gearandroutespages.ShoesPage;
 import pages.loginpages.LoginPage;
 import testdata.GetNewShoesAccountModel;
+import tests.BaseTest;
 import utilites.TestListeners;
 
 @Listeners(TestListeners.class)

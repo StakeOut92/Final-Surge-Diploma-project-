@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import pages.gearandroutespages.BikePage;
 import pages.loginpages.LoginPage;
 import testdata.GetNewBikeAccountModel;
+import tests.BaseTest;
 import utilites.TestListeners;
 
 @Listeners(TestListeners.class)

@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import pages.loginpages.LoginPage;
 import pages.workouttabpages.WorkoutTabRunPage;
 import testdata.GetNewWorkoutRunModel;
+import tests.BaseTest;
 import utilites.TestListeners;
 
 @Listeners(TestListeners.class)

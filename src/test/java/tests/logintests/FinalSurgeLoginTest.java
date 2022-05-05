@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.loginpages.LoginPage;
+import tests.BaseTest;
 import utilites.TestListeners;
 
 @Listeners(TestListeners.class)
